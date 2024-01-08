@@ -6,9 +6,10 @@
 
 <style lang="scss" scoped>
   .game-view {
-    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: $primary-purple;
   }
 </style>

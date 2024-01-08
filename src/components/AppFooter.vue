@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-// Example version number - replace with actual data if available
 const version = ref('1.0.0');
 const currentYear = computed(() => new Date().getFullYear());
 </script>
@@ -21,7 +20,7 @@ footer {
   color: $primary-white;
   background-color: $primary-violet;
   text-align: center;
-  padding: 20px 0;
+  padding: 2rem 2rem;
   font-size: 0.9em;
 }
 

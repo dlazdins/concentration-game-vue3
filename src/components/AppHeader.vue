@@ -68,7 +68,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px; // Adjust as per your design
+  height: 60px;
 }
 
 .burger-menu {
