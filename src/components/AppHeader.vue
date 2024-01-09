@@ -153,26 +153,40 @@ nav a.router-link-exact-active:hover {
 
 @media (max-width: 1023px) {
   /* Transition for sliding down */
-  .slide-down-enter-active, .slide-down-leave-active {
+  .slide-down-enter-active,
+  .slide-down-leave-active {
     transition: max-height 0.5s ease-in-out;
+
+    &.menu-content nav{
+      transition: opacity 0.5s ease-in-out;
+    }
   }
 
-  .slide-down-enter-from, .slide-down-leave-to {
+  .slide-down-enter-from,
+  .slide-down-leave-to {
     max-height: 0;
     overflow: hidden;
+
+    &.menu-content nav{
+      opacity: 0;
+    }
   }
 
-  .slide-down-enter-to, .slide-down-leave-from {
+  .slide-down-enter-to,
+  .slide-down-leave-from {
     max-height: 100%;
+    opacity: 1;
   }
 }
 
 /* Transition for resize without animation */
-.no-animation-enter-active, .no-animation-leave-active {
+.no-animation-enter-active,
+.no-animation-leave-active {
   transition: none;
 }
 
-.no-animation-enter, .no-animation-leave-to /* <- This is for Vue 2.x */ {
+.no-animation-enter,
+.no-animation-leave-to {
   display: none;
 }
 </style>
