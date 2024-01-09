@@ -37,13 +37,15 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
 
-const menuIcon = computed(() => (showMenu.value ? '✕' : '☰'));
 const transitionName = computed(() => windowResized.value ? 'no-animation' : 'slide-down');
 </script>
 
 <template>
   <header>
-    <div class="burger-menu" @click="toggleMenu">{{ menuIcon }}</div>
+    <div class="burger-menu" @click="toggleMenu" aria-label="Toggle menu">
+      <img v-if="!showMenu" class="icon" src="../assets/icons/burger-menu.svg" alt="Open menu">
+      <img v-else class="icon" src="../assets/icons/close.svg" alt="Close menu">
+    </div>
     <transition :name="transitionName">
       <div class="menu-content" v-show="showMenu">
         <nav>
@@ -77,6 +79,13 @@ header {
   color: $primary-white;
   cursor: pointer;
   display: block;
+  background: none;
+  border: none;
+}
+
+.burger-menu .icon {
+  height: 20px;
+  width: 20px;
 }
 
 .menu-content {
