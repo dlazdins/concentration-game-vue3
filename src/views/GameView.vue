@@ -1,5 +1,6 @@
 <script setup>
-import { ref, reactive, nextTick, computed } from 'vue';
+// import { ref, reactive, nextTick, computed } from 'vue';
+import { useGameLogic } from '../../src/composables/useGameLogic.js';
 
 const initialCards = [
   { id: 1, content: '🍎', matched: false, flipped: false },
@@ -11,77 +12,7 @@ const initialCards = [
   { id: 7, content: '🍒', matched: false, flipped: false },
   { id: 8, content: '🍉', matched: false, flipped: false },
 ];
-
-const cards = reactive({ items: [] });
-const flippedCards = ref([]);
-const moves = ref(0);
-const gameOver = computed(() => cards.items.every(card => card.matched));
-
-// Fisher-Yates shuffle function
-const shuffle = array => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-const shuffleCards = () => {
-  let duplicatedCards = [...initialCards, ...initialCards.map(card => ({ ...card }))];
-  duplicatedCards.forEach((card, index) => {
-    card.id = `${card.content}-${index}`;
-    card.matched = false;
-    card.flipped = false;
-  });
-  shuffle(duplicatedCards);
-  cards.items = duplicatedCards;
-}
-
-const flipCard = async index => {
-  // Prevent flipping the same card twice
-  const card = cards.items[index];
-  if (card.flipped || flippedCards.value.length === 2) {
-    return;
-  }
-
-  card.flipped = true;
-  flippedCards.value.push(card);
-
-  // Check for match if two cards are flipped
-  if (flippedCards.value.length === 2) {
-    moves.value++;
-    await nextTick(); // Wait for the DOM update
-    checkForMatch();
-  }
-}
-
-const checkForMatch = () => {
-  const [firstCard, secondCard] = flippedCards.value;
-
-  if (firstCard.content === secondCard.content) {
-    setTimeout(() => {
-      firstCard.matched = true;
-      secondCard.matched = true;
-      resetFlippedCards();
-    }, 1000);
-  } else {
-    setTimeout(() => {
-      firstCard.flipped = false;
-      secondCard.flipped = false;
-      resetFlippedCards();
-    }, 1000);
-  }
-}
-
-const resetFlippedCards = () => {
-  flippedCards.value = [];
-}
-
-const startGame = () => {
-  moves.value = 0;
-  resetFlippedCards();
-  shuffleCards();
-}
-
+const { cards, moves, gameOver, startGame, flipCard } = useGameLogic(initialCards);
 startGame();
 </script>
 
