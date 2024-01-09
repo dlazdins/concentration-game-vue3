@@ -42,6 +42,7 @@ const transitionName = computed(() => windowResized.value ? 'no-animation' : 'sl
 
 <template>
   <header>
+    <h1 class="title">Concentration game</h1>
     <div class="burger-menu" @click="toggleMenu" aria-label="Toggle menu">
       <img v-if="!showMenu" class="icon" src="../assets/icons/burger-menu.svg" alt="Open menu">
       <img v-else class="icon" src="../assets/icons/close.svg" alt="Close menu">
@@ -50,7 +51,7 @@ const transitionName = computed(() => windowResized.value ? 'no-animation' : 'sl
       <div class="menu-content" v-show="showMenu">
         <nav>
           <RouterLink to="/" @click="toggleMenu">Home</RouterLink>
-          <RouterLink to="/game" @click="toggleMenu">Game</RouterLink>
+          <RouterLink to="/game" @click="toggleMenu">The Game</RouterLink>
           <RouterLink to="/instructions" @click="toggleMenu">Instructions</RouterLink>
           <RouterLink to="/about" @click="toggleMenu">About us</RouterLink>
         </nav>
@@ -73,6 +74,14 @@ header {
   height: 60px;
 }
 
+.title {
+  position: absolute;
+  left: 4.5rem;
+  color: $primary-white;
+  margin: 0;
+  font-size: 20px;
+}
+
 .burger-menu {
   position: absolute;
   z-index: 1000;
@@ -81,6 +90,8 @@ header {
   display: block;
   background: none;
   border: none;
+  height: 20px;
+  width: 20px;
 }
 
 .burger-menu .icon {
@@ -98,7 +109,7 @@ header {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: $primary-violet;
+  background-color: $primary-purple;
 }
 
 nav {
@@ -127,6 +138,14 @@ nav a.router-link-exact-active:hover {
 @media (min-width: 1024px) {
   header {
     height: 80px;
+  }
+
+  .title {
+    position: absolute;
+    left: 2rem;
+    color: $primary-white;
+    margin: 0;
+    font-size: 20px;
   }
 
   .burger-menu {

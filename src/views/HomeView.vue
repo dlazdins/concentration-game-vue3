@@ -1,7 +1,7 @@
 <template>
   <div class="home-view">
     <section class="content">
-      <h1>Welcome to Concentration game!</h1>
+      <h2>Welcome to Concentration game!</h2>
       <p>
         Embark on a delightful journey through our vibrant puzzle where your memory is the key to success.
         As you flip each card, discover an array of colorful fruits and match them to win. Sharpen your memory, challenge your friends, and see how quickly you can clear the board.
@@ -30,7 +30,8 @@
   text-align: justify;
 }
 
-.home-view h1 {
+.home-view h2 {
+  font-size: 2rem;
   text-align: center;
 }
 
