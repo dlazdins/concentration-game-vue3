@@ -18,20 +18,6 @@ startGame();
 
 <template>
   <div class="game-view">
-    <h2 v-if="!gameOver">Flip & Match The Cards</h2>
-    <div
-      class="card-grid"
-      v-if="!gameOver">
-      <div
-        class="card"
-        v-for="(card, index) in cards.items"
-        :key="card.id"
-        @click="flipCard(index)"
-        :class="{ 'is-flipped': card.flipped, 'matched': card.matched }">
-        <div class="card-face card-front">{{ card.content }}</div>
-        <div class="card-face card-back"></div>
-      </div>
-    </div>
     <div class="game-over" v-if="gameOver">
       <p class="title">
         <span>Congratulations!</span><br>
@@ -39,6 +25,20 @@ startGame();
       </p>
       <button class="restart-btn" @click="startGame">Start New Game</button>
     </div>
+    <template v-else>
+      <h2>Flip & Match The Cards</h2>
+      <div class="card-grid">
+        <div
+          class="card"
+          v-for="(card, index) in cards.items"
+          :key="card.id"
+          @click="flipCard(index)"
+          :class="{ 'is-flipped': card.flipped, 'matched': card.matched }">
+          <div class="card-face card-front">{{ card.content }}</div>
+          <div class="card-face card-back"></div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
