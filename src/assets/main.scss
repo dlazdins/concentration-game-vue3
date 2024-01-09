@@ -1,0 +1,11 @@
+@import './base.scss';
+
+#app {
+  width: 100%;
+  margin: 0 auto;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

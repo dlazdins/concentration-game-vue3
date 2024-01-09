@@ -1,0 +1,55 @@
+/* CSS Reset or Normalize */
+@import 'normalize.css';
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Body and html rules */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: $primary-white;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+/* Link Styles */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Focus States */
+button,
+input,
+select,
+textarea,
+a[href] {
+  outline: none;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none;
+}
