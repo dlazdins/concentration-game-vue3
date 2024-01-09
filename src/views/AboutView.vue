@@ -24,7 +24,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: $primary-purple;
   padding: 2rem 2rem;
   color: $primary-white;
   background-color: $primary-blue;

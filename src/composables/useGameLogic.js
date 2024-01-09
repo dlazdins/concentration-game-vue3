@@ -18,8 +18,6 @@ export function useGameLogic(initialCards) {
       let duplicatedCards = [...initialCards.map(card => ({ ...card })), ...initialCards.map(card => ({ ...card }))]
         duplicatedCards.forEach((card, index) => {
             card.id = `${card.content}-${index}`;
-            card.matched = false;
-            card.flipped = false;
         });
         shuffle(duplicatedCards);
         cards.items = duplicatedCards;

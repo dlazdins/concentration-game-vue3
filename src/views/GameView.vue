@@ -3,14 +3,14 @@
 import { useGameLogic } from '../../src/composables/useGameLogic.js';
 
 const initialCards = [
-  { id: 1, content: '🍎', matched: false, flipped: false },
-  { id: 2, content: '🍌', matched: false, flipped: false },
-  { id: 3, content: '🍇', matched: false, flipped: false },
-  { id: 4, content: '🍓', matched: false, flipped: false },
-  { id: 5, content: '🥝', matched: false, flipped: false },
-  { id: 6, content: '🍍', matched: false, flipped: false },
-  { id: 7, content: '🍒', matched: false, flipped: false },
-  { id: 8, content: '🍉', matched: false, flipped: false },
+  { content: '🍎', matched: false, flipped: false },
+  { content: '🍌', matched: false, flipped: false },
+  { content: '🍇', matched: false, flipped: false },
+  { content: '🍓', matched: false, flipped: false },
+  { content: '🥝', matched: false, flipped: false },
+  { content: '🍍', matched: false, flipped: false },
+  { content: '🍒', matched: false, flipped: false },
+  { content: '🍉', matched: false, flipped: false },
 ];
 const { cards, moves, gameOver, startGame, flipCard } = useGameLogic(initialCards);
 startGame();
