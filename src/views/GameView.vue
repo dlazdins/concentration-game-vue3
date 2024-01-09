@@ -72,7 +72,7 @@ startGame();
 
 <template>
   <div class="game-view">
-    <h1 v-if="!gameOver">Match cards</h1>
+    <h2 v-if="!gameOver">Flip & Match The Cards</h2>
     <div
       class="card-grid"
       v-if="!gameOver">
@@ -87,7 +87,10 @@ startGame();
       </div>
     </div>
     <div class="game-over" v-if="gameOver">
-      <p class="title" >Congratulations! You completed the game in <span>{{ moves }}</span> moves.</p>
+      <p class="title">
+        <span>Congratulations!</span><br>
+        <span>You completed the game in <span class="counter">{{ moves }}</span> moves.</span>
+      </p>
       <button class="restart-btn" @click="startGame">Start New Game</button>
     </div>
   </div>
@@ -100,13 +103,9 @@ startGame();
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 1rem 1rem;
-  color: $primary-purple;
-  background-color: $primary-blue;
-}
-
-h1 {
+  padding: 2rem 1rem;
   color: $primary-white;
+  background-color: $primary-blue;
 }
 
 .card-grid {
@@ -162,12 +161,11 @@ h1 {
 }
 
 .game-over {
-  color: $primary-white;
   font-weight: bold;
   width: 100%;
   text-align: center;
 
-  .title > span {
+  .counter {
     color: $primary-orange;
   }
 

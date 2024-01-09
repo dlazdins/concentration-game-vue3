@@ -1,39 +1,46 @@
 <template>
   <div class="about-view">
-    <div class="content">
-      <h1>About Us</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-      <p>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-    </div>
+    <section class="content">
+      <header class="about-header">
+        <h2>About Us</h2>
+      </header>
+
+      <article class="about-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget consectetur sagittis, nisl mi hendrerit mauris, eget fermentum libero nulla ut nulla. Etiam et lorem fermentum, aliquet quam non, blandit augue.</p>
+
+        <p>Vivamus nec dui et turpis sollicitudin aliquet. Proin eget ante in diam gravida posuere. Nulla facilisi. Mauris ultricies, massa non fermentum bibendum, nisi eros bibendum nisi, eu fermentum nunc est eget nunc.</p>
+      </article>
+
+      <footer class="about-footer">
+        <p>Contact us at: <a href="mailto:info@example.com">info@example.com</a></p>
+      </footer>
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .about-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: $primary-purple;
-  }
+.about-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $primary-purple;
+  padding: 2rem 2rem;
+  color: $primary-white;
+  background-color: $primary-blue;
+  width: 100%;
+}
 
-  .about-view .content {
-    max-width: 600px;
-    text-align: justify
-  }
+.content {
+  max-width: 600px;
+  text-align: justify;
+}
 
-  .about-view h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+.about-header {
+  text-align: center;
+}
 
-  .about-view p {
-    margin-bottom: 10px;
-  }
+.about-footer a{
+  color: $primary-orange;
+}
 </style>

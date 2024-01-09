@@ -64,7 +64,7 @@ header {
   top: 0;
   z-index: 1000;
   padding: 0 2rem;
-  background-color: $primary-violet;
+  background-color: $primary-purple;
   display: flex;
   justify-content: space-between;
   align-items: center;
