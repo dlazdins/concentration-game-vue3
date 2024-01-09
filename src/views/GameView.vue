@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, nextTick, computed } from 'vue';
 
 const initialCards = [
   { id: 1, content: '🍎', matched: false, flipped: false },
@@ -12,32 +12,44 @@ const initialCards = [
   { id: 8, content: '🍉', matched: false, flipped: false },
 ];
 
-const cards = reactive([]);
+const cards = reactive({ items: [] });
 const flippedCards = ref([]);
 const moves = ref(0);
-const gameOver = computed(() => cards.every(card => card.matched));
+const gameOver = computed(() => cards.items.every(card => card.matched));
 
-const shuffleCards = () => {
-  let duplicatedCards = [...initialCards, ...initialCards];
-  duplicatedCards = duplicatedCards
-    .map(card => ({ ...card, id: Math.random() }))
-    .sort(() => Math.random() - 0.5);
-
-  cards.splice(0, cards.length, ...duplicatedCards);
+// Fisher-Yates shuffle function
+const shuffle = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
-const flipCard = (index) => {
+const shuffleCards = () => {
+  let duplicatedCards = [...initialCards, ...initialCards.map(card => ({ ...card }))];
+  duplicatedCards.forEach((card, index) => {
+    card.id = `${card.content}-${index}`;
+    card.matched = false;
+    card.flipped = false;
+  });
+  shuffle(duplicatedCards);
+  cards.items = duplicatedCards;
+}
+
+const flipCard = async index => {
   // Prevent flipping the same card twice
-  if (cards[index].flipped || flippedCards.value.length === 2) {
+  const card = cards.items[index];
+  if (card.flipped || flippedCards.value.length === 2) {
     return;
   }
 
-  cards[index].flipped = true;
-  flippedCards.value.push(cards[index]);
+  card.flipped = true;
+  flippedCards.value.push(card);
 
   // Check for match if two cards are flipped
   if (flippedCards.value.length === 2) {
     moves.value++;
+    await nextTick(); // Wait for the DOM update
     checkForMatch();
   }
 }
@@ -46,9 +58,11 @@ const checkForMatch = () => {
   const [firstCard, secondCard] = flippedCards.value;
 
   if (firstCard.content === secondCard.content) {
-    firstCard.matched = true;
-    secondCard.matched = true;
-    resetFlippedCards();
+    setTimeout(() => {
+      firstCard.matched = true;
+      secondCard.matched = true;
+      resetFlippedCards();
+    }, 1000);
   } else {
     setTimeout(() => {
       firstCard.flipped = false;
@@ -64,6 +78,7 @@ const resetFlippedCards = () => {
 
 const startGame = () => {
   moves.value = 0;
+  resetFlippedCards();
   shuffleCards();
 }
 
@@ -78,7 +93,7 @@ startGame();
       v-if="!gameOver">
       <div
         class="card"
-        v-for="(card, index) in cards"
+        v-for="(card, index) in cards.items"
         :key="card.id"
         @click="flipCard(index)"
         :class="{ 'is-flipped': card.flipped, 'matched': card.matched }">
