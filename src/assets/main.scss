@@ -12,5 +12,7 @@
 
 .main-content {
   flex: 1;
-  padding: 2rem 2rem;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
 }

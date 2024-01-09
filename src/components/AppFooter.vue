@@ -17,10 +17,11 @@ const currentYear = computed(() => new Date().getFullYear());
 <style lang="scss" scoped>
 footer {
   width: 100%;
+  height: 100px;
   color: $primary-white;
   background-color: $primary-violet;
   text-align: center;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
   font-size: 0.9em;
 }
 
